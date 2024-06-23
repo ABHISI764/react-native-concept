@@ -6,6 +6,7 @@ import FlatListApiCallExample from './src/components/FlatListApiCallExample';
 import LoginWithFormikandYup from './src/components/LoginWithFormikandYupExample/LoginWithFormikandYup';
 import HomeScreen from './src/components/LoginWithFormikandYupExample/HomeScreen';
 import UseCallbackExample from './src/components/UseCallback/UseCallbackExample';
+import FlatlistExample from './src/components/FlatList/FlatlistExample';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -15,7 +16,7 @@ const App = () => {
       {/* <Stack.Screen name="FlatListApiCallExample" component={FlatListApiCallExample} /> */}
       {/* <Stack.Screen name="LoginWithFormikandYup" component={LoginWithFormikandYup} /> */}
       {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
-      <Stack.Screen name="UseCallbackExample" component={UseCallbackExample} />
+      <Stack.Screen name="FlatlistExample" component={FlatlistExample} />
 
     </Stack.Navigator>
   </NavigationContainer>
