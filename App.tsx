@@ -9,6 +9,9 @@ import UseCallbackExample from './src/components/UseCallback/UseCallbackExample'
 import FlatlistExample from './src/components/FlatList/FlatlistExample';
 import ForegroundBackgroundExample from './src/components/Foreground&BackgroundServices/ForegroundBackgroundExample';
 import CounterScreen from './src/components/CounterScreen';
+import Home from './src/components/SqliteDatabase/Home';
+import EditUser from './src/components/SqliteDatabase/EditUser';
+import AddUser from './src/components/SqliteDatabase/AddUser';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -21,7 +24,10 @@ const App = () => {
       {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
       {/* <Stack.Screen name="FlatlistExample" component={FlatlistExample} /> */}
       {/* <Stack.Screen name="ForegroundBackgroundExample" component={ForegroundBackgroundExample} /> */}
-      <Stack.Screen name="CounterScreen" component={CounterScreen} />
+      {/* <Stack.Screen name="CounterScreen" component={CounterScreen} /> */}
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="EditUser" component={EditUser} />
+      <Stack.Screen name="AddUser" component={AddUser} />
 
     </Stack.Navigator>
   </NavigationContainer>
