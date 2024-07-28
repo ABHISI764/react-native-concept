@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     marginTop: 20,
     backgroundColor: '#f2f2f2',
+    
     borderRadius: 10,
     height: 50,
   },

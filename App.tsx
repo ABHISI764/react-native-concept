@@ -12,6 +12,7 @@ import CounterScreen from './src/components/CounterScreen';
 import Home from './src/components/SqliteDatabase/Home';
 import EditUser from './src/components/SqliteDatabase/EditUser';
 import AddUser from './src/components/SqliteDatabase/AddUser';
+import FlatListPractice from './src/components/FlatlistInterview/FlatListPractice';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -25,9 +26,10 @@ const App = () => {
       {/* <Stack.Screen name="FlatlistExample" component={FlatlistExample} /> */}
       {/* <Stack.Screen name="ForegroundBackgroundExample" component={ForegroundBackgroundExample} /> */}
       {/* <Stack.Screen name="CounterScreen" component={CounterScreen} /> */}
-      <Stack.Screen name="Home" component={Home} />
+      {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="EditUser" component={EditUser} />
-      <Stack.Screen name="AddUser" component={AddUser} />
+      <Stack.Screen name="AddUser" component={AddUser} /> */}
+      <Stack.Screen name="FlatListPractice" component={FlatListPractice} />
 
     </Stack.Navigator>
   </NavigationContainer>
