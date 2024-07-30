@@ -13,6 +13,7 @@ import Home from './src/components/SqliteDatabase/Home';
 import EditUser from './src/components/SqliteDatabase/EditUser';
 import AddUser from './src/components/SqliteDatabase/AddUser';
 import FlatListPractice from './src/components/FlatlistInterview/FlatListPractice';
+import LoginFormSimple from './src/components/BasicLoginFormExample/LoginFormSimple';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -21,16 +22,16 @@ const App = () => {
     <Stack.Navigator>
 
       {/* <Stack.Screen name="FlatListApiCallExample" component={FlatListApiCallExample} /> */}
-      {/* <Stack.Screen name="LoginWithFormikandYup" component={LoginWithFormikandYup} /> */}
-      {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
+      {/* <Stack.Screen name="LoginWithFormikandYup" component={LoginWithFormikandYup} />
+      <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
       {/* <Stack.Screen name="FlatlistExample" component={FlatlistExample} /> */}
       {/* <Stack.Screen name="ForegroundBackgroundExample" component={ForegroundBackgroundExample} /> */}
       {/* <Stack.Screen name="CounterScreen" component={CounterScreen} /> */}
       {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="EditUser" component={EditUser} />
       <Stack.Screen name="AddUser" component={AddUser} /> */}
-      <Stack.Screen name="FlatListPractice" component={FlatListPractice} />
-
+      {/* <Stack.Screen name="FlatListPractice" component={FlatListPractice} /> */}
+      <Stack.Screen name="LoginFormSimple" component={LoginFormSimple} />
     </Stack.Navigator>
   </NavigationContainer>
   )

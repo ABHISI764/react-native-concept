@@ -1,49 +1,112 @@
-import {View, Text, SafeAreaView, FlatList, Image} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  FlatList,
+  Image,
+  ActivityIndicator,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  StyleSheet,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
-
- const apiurl = 'https://dummyjson.com/products'
 const FlatListPractice = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(apiurl);
-      const data = await response.json();
-      setData(data.products);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('')
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
-  const renderItem = ({item}) => {
-    return (
-      <View>
-        <Image
-          source={{uri: item.thumbnail}}
-          style={{
-            width: '100%',
-            height: 200,
-            borderRadius: 8,
-            borderBottomWidth: 0.5,
-          }}
-        />
-        <View style={{flexDirection:'row',justifyContent:'space-between',marginHorizontal:40}}>
-        <Text>{item.brand}</Text>
-        <Text>{item.price}</Text>
-        </View>
-      </View>
-    );
+
+  const handelLogin = () => {
+    let valid = true;
+    if(email === ''){
+      setEmailError('Email is required');
+      valid = false;
+    }else if (!validateEmail(email)){
+      setEmailError('please enter a valid email');
+      valid = false;
+    }else {
+      setEmailError('')
+    }
+
+    if( password === '') {
+      setPasswordError('Please enter a valid password ');
+      valid = false;
+    } else {
+      setPasswordError('');
+    }
+
+    if (email == 'testing@gmail.com' && password == 'password') {
+      Alert.alert(`WELCOM to the login dashBoard `);
+    } else {
+      console.log(`login password or email is wrong`);
+    }
   };
 
   return (
-    <SafeAreaView>
-      <FlatList data={data} renderItem={renderItem} />
-      <Text>FlatList</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Enter Email</Text>
+      <TextInput
+        placeholder="Enter you email"
+        value={email}
+        onChangeText={setEmail}
+        style={styles.input}
+        autoCapitalize="none"
+      />
+      {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+      <Text style={styles.title}>Enter Password</Text>
+      <TextInput
+        placeholder="Enter your password"
+        value={password}
+        onChangeText={setPassword}
+        autoCapitalize="none"
+        style={styles.input}
+      />
+      {passwordError? <Text style={styles.errorText}>{passwordError} </Text>: null}
+      <TouchableOpacity onPress={handelLogin}>
+        <Text style={styles.button}>Submit</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    // backgroundColor:'red'
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 8,
+  },
+  button: {
+    backgroundColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign:'center',
+    padding: 15,
+    marginTop: 20,
+    color:'white'
+  },
+  input: {
+    width: '100%',
+    borderWidth: 0.5,
+    borderColor: 'grey',
+    height: 40,
+    paddingHorizontal: 8,
+  },
+});
 export default FlatListPractice;
