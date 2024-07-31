@@ -14,6 +14,7 @@ import EditUser from './src/components/SqliteDatabase/EditUser';
 import AddUser from './src/components/SqliteDatabase/AddUser';
 import FlatListPractice from './src/components/FlatlistInterview/FlatListPractice';
 import LoginFormSimple from './src/components/BasicLoginFormExample/LoginFormSimple';
+import ReactNativeSearchFilterExample from './src/components/React_Native_Search_Filter/ReactNativeSearchFilterExample';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -31,7 +32,8 @@ const App = () => {
       <Stack.Screen name="EditUser" component={EditUser} />
       <Stack.Screen name="AddUser" component={AddUser} /> */}
       {/* <Stack.Screen name="FlatListPractice" component={FlatListPractice} /> */}
-      <Stack.Screen name="LoginFormSimple" component={LoginFormSimple} />
+      <Stack.Screen name="ReactNativeSearchFilterExample" component={ReactNativeSearchFilterExample} />
+      {/* <Stack.Screen name="LoginFormSimple" component={LoginFormSimple} /> */}
     </Stack.Navigator>
   </NavigationContainer>
   )

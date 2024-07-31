@@ -11,67 +11,58 @@ import {
   StyleSheet,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 
 const FlatListPractice = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('')
+  const [data, setData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
+  const [serach, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
+      setData(response.data);
+      setFilterData(response.data);
+      setLoading(false);
+    });
+  }, []);
+
+  const handelSearch = text => {
+    setSearch(text);
+    const newData = data.filter(item => {
+      const itemData = `${item.name.toUpperCase()} ${item.email.toUpperCase()}`;
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    setFilterData(newData);
   };
 
-  const handelLogin = () => {
-    let valid = true;
-    if(email === ''){
-      setEmailError('Email is required');
-      valid = false;
-    }else if (!validateEmail(email)){
-      setEmailError('please enter a valid email');
-      valid = false;
-    }else {
-      setEmailError('')
-    }
+  if (loading) {
+    return (
+      <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />
+    );
+  }
 
-    if( password === '') {
-      setPasswordError('Please enter a valid password ');
-      valid = false;
-    } else {
-      setPasswordError('');
-    }
-
-    if (email == 'testing@gmail.com' && password == 'password') {
-      Alert.alert(`WELCOM to the login dashBoard `);
-    } else {
-      console.log(`login password or email is wrong`);
-    }
-  };
+  const renderItem = ({item}) => (
+    <View style={styles.item}>
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.email}>{item.email}</Text>
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Enter Email</Text>
       <TextInput
-        placeholder="Enter you email"
-        value={email}
-        onChangeText={setEmail}
-        style={styles.input}
-        autoCapitalize="none"
+        placeholder="Search by name of email"
+        style={styles.searchBar}
+        value={serach}
+        onChangeText={handelSearch}
       />
-      {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
-      <Text style={styles.title}>Enter Password</Text>
-      <TextInput
-        placeholder="Enter your password"
-        value={password}
-        onChangeText={setPassword}
-        autoCapitalize="none"
-        style={styles.input}
+      <FlatList
+        data={filterData}
+        keyExtractor={item => item.id.toString()}
+        renderItem={renderItem}
       />
-      {passwordError? <Text style={styles.errorText}>{passwordError} </Text>: null}
-      <TouchableOpacity onPress={handelLogin}>
-        <Text style={styles.button}>Submit</Text>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -79,34 +70,32 @@ const FlatListPractice = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 16,
-    // backgroundColor:'red'
+    padding: 16,
+    backgroundColor: '#fff',
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 16,
-    textAlign: 'center',
-  },
-  errorText: {
-    color: 'red',
-    marginBottom: 8,
-  },
-  button: {
-    backgroundColor: 'green',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign:'center',
-    padding: 15,
-    marginTop: 20,
-    color:'white'
-  },
-  input: {
-    width: '100%',
-    borderWidth: 0.5,
+  searchBar: {
+    borderWidth: 1,
     borderColor: 'grey',
     height: 40,
     paddingHorizontal: 8,
+  },
+  item: {
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  name: {
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  email: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  loader: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default FlatListPractice;
