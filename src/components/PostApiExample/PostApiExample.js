@@ -25,7 +25,7 @@ const PostApiExample = () => {
         title,
         body,
         userId: 1,
-      })
+      }) 
       .then(response => {
         Alert.alert(`data saved successfully, post id: ${response.data.id}`);
         setTitle('');

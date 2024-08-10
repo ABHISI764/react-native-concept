@@ -6,6 +6,7 @@ import {fetchTodo} from './todoSlicer';
 const CallApiUsingRedux = () => {
   const dispatch = useDispatch();
   const {data} = useSelector(state => state.todo);
+  
   useEffect(() => {
     dispatch(fetchTodo());
   }, []);
