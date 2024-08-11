@@ -43,8 +43,10 @@ const Practice = () => {
       return itemData.includes(textData);
     });
     setFilterData(filterItem);
-    //  setSearch(textData)
+
   };
+
+
   return (
     <View>
       <TextInput
