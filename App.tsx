@@ -21,6 +21,7 @@ import Practice from './src/components/InterView/Practice';
 import TypeScripeComponent from './src/components/TypeScriptReactNative/TypeScripeComponent';
 import HomeTypeScript from './src/components/TypeScriptReactNative/StateInTypeScript';
 import StateInTypeScript from './src/components/TypeScriptReactNative/StateInTypeScript';
+import FlatListTypeScript from './src/components/TypeScriptReactNative/FlatListTypeScript';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -41,7 +42,8 @@ const App = () => {
       {/* <Stack.Screen name="CallApiUsingRedux" component={CallApiUsingRedux} />  */}
       {/* <Stack.Screen name="Practice" component={Practice} />  */}
       {/* <Stack.Screen name="TypeScripeComponent" component={TypeScripeComponent} />  */}
-      <Stack.Screen name="StateInTypeScript" component={StateInTypeScript} /> 
+      {/* <Stack.Screen name="StateInTypeScript" component={StateInTypeScript} />  */}
+      <Stack.Screen name="FlatListTypeScript" component={FlatListTypeScript} /> 
       {/* <Stack.Screen name="PostApiExample" component={PostApiExample} /> */}
       {/* <Stack.Screen name="ReactNativeSearchFilterExample" component={ReactNativeSearchFilterExample} /> */}
       {/* <Stack.Screen name="LoginFormSimple" component={LoginFormSimple} /> */}
